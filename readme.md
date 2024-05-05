@@ -10,7 +10,7 @@
 ### Как запускать
 
 * Сначала лучше запустить генераторы и создать свои объекты.
-* Затем можно запускать тесты. Можно начать с [LoginTests](src/test/java/ru/kpfu/itis/test/LoginTests.java), затем лучше запускать их в таком порядке:
+* Затем можно запускать тесты. Можно начать с [LoginTests](src/test/java/ru/kpfu/itis/test/LoginTests.java) и потом лучше соблюдать такой порядок:
 
 1. CreateTest
 2. ChangeTest
