@@ -5,10 +5,7 @@ import lombok.Data;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import ru.kpfu.itis.helper.CreateHelper;
-import ru.kpfu.itis.helper.DeleteHelper;
-import ru.kpfu.itis.helper.LoginHelper;
-import ru.kpfu.itis.helper.NavigationHelper;
+import ru.kpfu.itis.helper.*;
 
 @Data
 public class AppManager {
@@ -17,9 +14,10 @@ public class AppManager {
     private static final ThreadLocal<AppManager> app = new ThreadLocal<>();
 
     private final CreateHelper createHelper;
+    private final ChangeHelper changeHelper;
     private final DeleteHelper deleteHelper;
     private final NavigationHelper navigationHelper;
-    private final LoginHelper loginHelper;
+    private final AuthHelper authHelper;
 
 
     public AppManager() {
@@ -27,10 +25,11 @@ public class AppManager {
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        this.changeHelper = new ChangeHelper(this);
         this.createHelper = new CreateHelper(this);
         this.deleteHelper = new DeleteHelper(this);
         this.navigationHelper = new NavigationHelper(this);
-        this.loginHelper = new LoginHelper(this);
+        this.authHelper = new AuthHelper(this);
     }
 
     public void quit() {

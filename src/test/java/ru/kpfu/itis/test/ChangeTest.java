@@ -1,29 +1,26 @@
 package ru.kpfu.itis.test;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import ru.kpfu.itis.helper.CreateHelper;
+import ru.kpfu.itis.helper.ChangeHelper;
 import ru.kpfu.itis.helper.NavigationHelper;
 import ru.kpfu.itis.mapper.ValidDataMapper;
 import ru.kpfu.itis.model.TestData;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CreateTest extends AuthBase {
+public class ChangeTest extends AuthBase {
 
     @ParameterizedTest
     @ArgumentsSource(ValidDataMapper.class)
-    public void test_note_creation(TestData testData) {
+    public void test_note_change(TestData testData) {
         NavigationHelper navigationHelper = app.getNavigationHelper();
-        CreateHelper createHelper = app.getCreateHelper();
+        ChangeHelper changeHelper = app.getChangeHelper();
         navigationHelper.goMainPage(testData.getBaseUrl());
-        createHelper.createNote(testData.getNoteText(), testData.getNoteTitle());
+        changeHelper.changeNote(testData.getNoteText());
         navigationHelper.openNote(testData.getNoteTitle());
 
-        boolean pageContainsText = createHelper
+        boolean pageContainsText = changeHelper
                 .getNote()
                 .getText()
                 .contains(testData.getNoteText());

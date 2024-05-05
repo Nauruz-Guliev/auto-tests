@@ -1,13 +1,12 @@
 package ru.kpfu.itis.helper;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ru.kpfu.itis.app.AppManager;
 import ru.kpfu.itis.model.TestData;
 
-public class LoginHelper extends HelperBase {
+public class AuthHelper extends HelperBase {
 
-    public LoginHelper(AppManager app) {
+    public AuthHelper(AppManager app) {
         super(app);
     }
 
