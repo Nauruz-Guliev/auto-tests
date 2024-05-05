@@ -41,4 +41,8 @@ public class HelperBase {
     public boolean checkElementExistsByName(String name) {
         return !app.getDriver().findElements(By.name(name)).isEmpty();
     }
+
+    public boolean checkElementExistsLinkText(String name) {
+        return !app.getDriver().findElements(By.linkText(name)).isEmpty();
+    }
 }

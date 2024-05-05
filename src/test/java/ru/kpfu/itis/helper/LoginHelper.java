@@ -14,24 +14,23 @@ public class LoginHelper extends HelperBase {
 
     public void login(TestData testData) {
         if (isLoggedIn()) {
-            if (isLoggedIn(testData.getEmail())) {
-                return;
-            }
-        //    logout(testData.getAccountCode());
+            logout();
         }
+        getElementByLinkText("Log In").click();
+        getElementByName("username").sendKeys(testData.getEmail());
+        getElementByName("password").sendKeys(testData.getPassword());
+        getElementByCssSelector(".ui-button-text").click();
+    }
+
+    public WebElement getUsername() {
+        return getElementByName("username");
     }
 
     public void logout() {
-        getElementByLinkText("Выйти").click();
+        getElementByLinkText("Sign Out").click();
     }
 
     public boolean isLoggedIn() {
-        // проверка наличия кнопки "Войти"
-        return app.getDriver().findElements(By.name("commit")).isEmpty();
-    }
-
-    public boolean isLoggedIn(String nickname) {
-        // проверка наличия кнопки пользователя, текст кнопки совпадает с ником
-        return !app.getDriver().findElements(By.linkText(nickname)).isEmpty();
+        return checkElementExistsLinkText("My Account");
     }
 }
