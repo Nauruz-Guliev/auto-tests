@@ -10,12 +10,14 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Getter
-public class UserData {
+public class TestData {
 
     @XmlElement
     private String password;
     @XmlElement
     private String email;
+    @XmlElement
+    private String noteTitle;
     @XmlElement
     private String noteText;
     @XmlElement

@@ -30,6 +30,10 @@ public class HelperBase {
         return app.getDriver().findElement(By.cssSelector(cssSelector));
     }
 
+    protected WebElement getElementByClassName(String className) {
+        return app.getDriver().findElement(By.className(className));
+    }
+
     protected void wait(int seconds) {
         app.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
     }

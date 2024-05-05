@@ -2,7 +2,9 @@ package ru.kpfu.itis.app;
 
 
 import lombok.Data;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import ru.kpfu.itis.helper.CreateHelper;
 import ru.kpfu.itis.helper.DeleteHelper;
 import ru.kpfu.itis.helper.LoginHelper;
@@ -21,6 +23,8 @@ public class AppManager {
 
 
     public AppManager() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         this.createHelper = new CreateHelper(this);

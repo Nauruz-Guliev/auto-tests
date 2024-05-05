@@ -4,7 +4,8 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import ru.kpfu.itis.model.UserData;
+import ru.kpfu.itis.model.TestData;
+
 import java.io.File;
 import java.util.Random;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class TestDataGeneratorBase {
     public TestDataGeneratorBase() {
         scanner = new Scanner(System.in);
         try {
-            context = JAXBContext.newInstance(UserData.class);
+            context = JAXBContext.newInstance(TestData.class);
             marshaller = context.createMarshaller();
             unmarshaller = context.createUnmarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -63,24 +64,23 @@ public class TestDataGeneratorBase {
         return !input.isEmpty() && !input.isBlank() && !input.matches("^\\s+$");
     }
 
-    protected boolean save(UserData userData, String fileName) {
+    protected boolean save(TestData testData, String fileName) {
         try {
             File file = new File(fileName);
-            marshaller.marshal(userData, file);
+            marshaller.marshal(testData, file);
             return true;
         } catch (JAXBException exception) {
             return false;
         }
     }
 
-    protected boolean read(String fileName) {
+    protected void read(String fileName) {
         try {
             println(makeGreen("Создан и сохранен xml-объект: \n"));
-            UserData person = (UserData) unmarshaller.unmarshal(new File(fileName));
+            TestData person = (TestData) unmarshaller.unmarshal(new File(fileName));
             println(makePurple(person.toString()));
-            return true;
         } catch (JAXBException exception) {
-            return false;
+            println(makeRed("Не удалось прочитать файл. " + exception.getMessage()));
         }
     }
 }
