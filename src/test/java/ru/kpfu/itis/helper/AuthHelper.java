@@ -10,7 +10,6 @@ public class AuthHelper extends HelperBase {
         super(app);
     }
 
-
     public void login(TestData testData) {
         if (isLoggedIn()) {
             logout();

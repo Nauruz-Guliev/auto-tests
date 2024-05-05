@@ -12,7 +12,6 @@ public class TextColorizer {
     public static final String CYAN = "\033[0;36m";
     public static final String WHITE = "\033[0;37m";
 
-    // Методы для печати текста определенного цвета
     public static String makeRed(String text) {
         return RED + text + RESET;
     }
