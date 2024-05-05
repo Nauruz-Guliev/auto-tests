@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <testData>
-    <password>nauruz0304</password>
-    <email>nauruz</email>
-    <noteTitle>ЗАМЕТКА</noteTitle>
-    <noteText>фзщылвзщфылвзщфылвзщфылвзщфылвзфыщлвзщфлывзщф</noteText>
-    <baseUrl>https://www.zippyjot.com/</baseUrl>
+    <password>password</password>
+    <email>login</email>
+    <noteTitle>Заметка</noteTitle>
+    <noteText>Погода ужас</noteText>
+    <baseUrl>https://www.zippyjot.com/home</baseUrl>
 </testData>
